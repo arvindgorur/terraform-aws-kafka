@@ -7,7 +7,7 @@
  */
 
 module "my_msk_cluster" {
-    source = "./kakfa"
+    source = "./kafka"
     cluster_name = "test-cluster"
     client_subnets = ["subnet-0d197931bccaa49c1", "subnet-0b09f110686a4193d"]
     security_groups = ["sg-019acf359a817f363"]
