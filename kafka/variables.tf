@@ -5,7 +5,8 @@ variable "cluster_name" {
 
 variable "kafka_version" {
   description = "Kafka version"
-  type        = "2.6.1"
+  type        = string
+  default     = "2.6.1"
 }
 
 variable "number_of_broker_nodes" {
@@ -39,7 +40,6 @@ variable "security_groups" {
 variable "encryption_at_rest_kms_key_arn" {
   description = "List of egress rules to create where 'self' is used as source"
   type        = string
-  default     = []
 
 }
 
