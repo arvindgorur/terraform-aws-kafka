@@ -1,4 +1,4 @@
-resource "aws_msk_cluster" "example" {
+resource "aws_msk_cluster" "msk_cluster" {
   cluster_name           = var.cluster_name
   kafka_version          = var.kafka_version
   number_of_broker_nodes = var.number_of_broker_nodes
@@ -11,7 +11,7 @@ resource "aws_msk_cluster" "example" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = var.encryption_at_rest_kms_key_arn
+    #encryption_at_rest_kms_key_arn = var.encryption_at_rest_kms_key_arn
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true
