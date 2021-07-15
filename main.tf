@@ -17,4 +17,5 @@ module "my_msk_cluster" {
   tag_application = "my application"
   tag_team        = "my team"
   kafka_version   = "2.7.0"
+  instance_type = "kafka.m5.large"
 }
