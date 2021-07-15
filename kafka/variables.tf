@@ -12,10 +12,6 @@ variable "kafka_version" {
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
   type        = number
-  validation {
-    condition = var.number_of_broker_nodes % length(var.client_subnets) = 0
-    error_message = "The number of broker nodes must be a multiple of Availability Zones in the Client Subnets parameter."
-  }
 }
 
 variable "instance_type" {
