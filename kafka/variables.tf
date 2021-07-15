@@ -12,8 +12,10 @@ variable "kafka_version" {
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
   type        = number
-  default     = 3
-
+  validation {
+    condition = var.number_of_broker_nodes % length(var.client_subnets) = 0
+    error_message = "The number of broker nodes must be a multiple of Availability Zones in the Client Subnets parameter."
+  }
 }
 
 variable "instance_type" {
@@ -38,9 +40,8 @@ variable "security_groups" {
 }
 
 variable "encryption_at_rest_kms_key_arn" {
-  description = "List of egress rules to create where 'self' is used as source"
+  description = "ARN of the KMS key to use to encrypt data at rest"
   type        = string
-
 }
 
 variable "environment" {
