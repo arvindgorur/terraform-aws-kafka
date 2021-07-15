@@ -16,4 +16,5 @@ module "my_msk_cluster" {
   environment     = "dev"
   tag_application = "my application"
   tag_team        = "my team"
+  kafka_version   = "2.7.0"
 }
