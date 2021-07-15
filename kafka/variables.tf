@@ -35,10 +35,10 @@ variable "security_groups" {
   type        = list(string)
 }
 
-variable "encryption_at_rest_kms_key_arn" {
-  description = "ARN of the KMS key to use to encrypt data at rest"
-  type        = string
-}
+# variable "encryption_at_rest_kms_key_arn" {
+#   description = "ARN of the KMS key to use to encrypt data at rest"
+#   type        = string
+# }
 
 variable "environment" {
   description = "Provide appropriate environment name"
