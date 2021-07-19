@@ -24,4 +24,10 @@
 
 resource "aws_kms_key" "kms_key" {
   description = "This is a dummy key"
+  enable_key_rotation = true
+}
+
+resource "aws_kms_alias" "kms_key_alias" {
+  name = "SomeKey"
+  target_key_id = aws_kms_key.kms_key.id
 }
