@@ -1,3 +1,15 @@
+resource "aws_kms_key" "kms_key" {
+  count               = var.use_dedicated_key ? 1 : 0
+  description         = var.key_description
+  enable_key_rotation = true
+}
+
+resource "aws_kms_alias" "kms_key_alias" {
+  count         = var.use_dedicated_key ? 1 : 0
+  name          = join("alias/", var.key_alias)
+  target_key_id = aws_kms_key.kms_key.key_id
+}
+
 resource "aws_msk_cluster" "msk_cluster" {
   cluster_name           = var.cluster_name
   kafka_version          = var.kafka_version
@@ -11,7 +23,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = var.encryption_at_rest_kms_key_arn
+    encryption_at_rest_kms_key_arn = var.use_dedicated_key ? aws_kms_key.kms_key.key_id : null
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true

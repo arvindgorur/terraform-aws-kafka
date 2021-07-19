@@ -52,6 +52,25 @@ variable "log_group" {
   type        = string
   default     = null
 }
+
+variable "use_dedicated_key" {
+  description = "Specify whether to use AWS managed or dedicated KMS key for encryption"
+  type        = bool
+  default     = false
+}
+
+variable "key_description" {
+  description = "The KMS key description"
+  type        = string
+  default     = null
+}
+
+variable "key_alias" {
+  description = "Alias (display name) for the KMS key"
+  type        = string
+  default     = null
+}
+
 variable "environment" {
   description = "Provide appropriate environment name"
   type        = string
