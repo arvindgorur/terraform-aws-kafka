@@ -17,7 +17,7 @@ variable "number_of_broker_nodes" {
 variable "instance_type" {
   description = "Cluster Instance type"
   type        = string
-  default = "kafka.t3.small"
+  default     = "kafka.t3.small"
 }
 
 variable "ebs_volume_size" {
@@ -35,19 +35,22 @@ variable "security_groups" {
   type        = list(string)
 }
 
-# variable "encryption_at_rest_kms_key_arn" {
-#   description = "ARN of the KMS key to use to encrypt data at rest"
-#   type        = string
-# }
+variable "encryption_at_rest_kms_key_arn" {
+  description = "ARN of the KMS key to use to encrypt data at rest"
+  type        = string
+  default     = null
+}
 
 variable "cloudwatch_enabled" {
   description = "Specifies whether broker logs should be sent to cloudwatch"
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "log_group" {
   description = "The log group to send the broker logs to"
-  default = null
+  type        = string
+  default     = null
 }
 variable "environment" {
   description = "Provide appropriate environment name"

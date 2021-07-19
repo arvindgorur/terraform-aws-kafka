@@ -13,11 +13,11 @@ module "my_msk_cluster" {
   security_groups        = ["sg-0a877f4a96539ee14"]
   number_of_broker_nodes = 2
   #encryption_at_rest_kms_key_arn = "arn:aws:kms:us-east-1:960672390668:key/0dc1b9bb-f664-4750-b971-4aace262ee10"
-  environment     = "dev"
-  tag_application = "my application"
-  tag_team        = "my team"
-  kafka_version   = "2.7.0"
-  instance_type = "kafka.m5.large"
+  environment        = "dev"
+  tag_application    = "my application"
+  tag_team           = "my team"
+  kafka_version      = "2.7.0"
+  instance_type      = "kafka.m5.large"
   cloudwatch_enabled = true
-  log_group = "MSK"
+  log_group          = "MSK"
 }

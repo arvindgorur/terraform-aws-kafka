@@ -11,7 +11,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   encryption_info {
-    #encryption_at_rest_kms_key_arn = var.encryption_at_rest_kms_key_arn
+    encryption_at_rest_kms_key_arn = var.encryption_at_rest_kms_key_arn
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true
@@ -21,7 +21,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   logging_info {
     broker_logs {
       cloudwatch_logs {
-        enabled = var.cloudwatch_enabled
+        enabled   = var.cloudwatch_enabled
         log_group = var.log_group
       }
     }
