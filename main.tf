@@ -9,8 +9,8 @@
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-0b1d4f755ec71824e", "subnet-0676b364b392f286e"]
-  security_groups        = ["sg-0d2529b0efc1ad854"]
+  client_subnets         = ["subnet-05b967347e42ac28a", "subnet-07d46ef63b7d95bbb"]
+  security_groups        = ["sg-0a877f4a96539ee14"]
   number_of_broker_nodes = 2
   #encryption_at_rest_kms_key_arn = "arn:aws:kms:us-east-1:960672390668:key/0dc1b9bb-f664-4750-b971-4aace262ee10"
   environment     = "dev"
