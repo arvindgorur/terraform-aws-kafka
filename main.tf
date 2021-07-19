@@ -28,6 +28,6 @@ resource "aws_kms_key" "kms_key" {
 }
 
 resource "aws_kms_alias" "kms_key_alias" {
-  name = "SomeKey"
+  name = "alias/some-key"
   target_key_id = aws_kms_key.kms_key.id
 }
