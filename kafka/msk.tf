@@ -18,6 +18,15 @@ resource "aws_msk_cluster" "msk_cluster" {
     }
   }
 
+  logging_info {
+    broker_logs {
+      cloudwatch_logs {
+        enabled = var.cloudwatch_enabled
+        log_group = var.log_group
+      }
+    }
+  }
+
   tags = merge(
     local.common_tags
   )

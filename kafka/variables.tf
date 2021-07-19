@@ -40,6 +40,15 @@ variable "security_groups" {
 #   type        = string
 # }
 
+variable "cloudwatch_enabled" {
+  description = "Specifies whether broker logs should be sent to cloudwatch"
+  default = false
+}
+
+variable "log_group" {
+  description = "The log group to send the broker logs to"
+  default = null
+}
 variable "environment" {
   description = "Provide appropriate environment name"
   type        = string
@@ -61,13 +70,11 @@ variable "environment" {
 variable "tag_application" {
   description = "Application tag"
   type        = string
-
 }
 
 variable "tag_team" {
   description = "Team tag"
   type        = string
-
 }
 
 locals {
