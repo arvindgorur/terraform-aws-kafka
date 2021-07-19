@@ -1,13 +1,14 @@
 resource "aws_kms_key" "kms_key" {
   count               = var.use_dedicated_key ? 1 : 0
-  description         = var.key_description
+  description         = join("KMS key for MSK cluster", var.cluster_name)
   enable_key_rotation = true
+  tags = local.common_tags
 }
 
 resource "aws_kms_alias" "kms_key_alias" {
   count         = var.use_dedicated_key ? 1 : 0
   name          = join("alias/", var.key_alias)
-  target_key_id = aws_kms_key.kms_key.key_id
+  target_key_id = aws_kms_key.kms_key[0].key_id
 }
 
 resource "aws_msk_cluster" "msk_cluster" {
@@ -23,7 +24,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = var.use_dedicated_key ? aws_kms_key.kms_key.key_id : null
+    encryption_at_rest_kms_key_arn = var.use_dedicated_key ? aws_kms_key.kms_key[0].key_id : null
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true
@@ -39,7 +40,5 @@ resource "aws_msk_cluster" "msk_cluster" {
     }
   }
 
-  tags = merge(
-    local.common_tags
-  )
+  tags = local.common_tags
 }
