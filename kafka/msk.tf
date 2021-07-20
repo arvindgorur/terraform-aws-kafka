@@ -11,6 +11,12 @@ resource "aws_kms_alias" "kms_key_alias" {
   target_key_id = aws_kms_key.kms_key[0].key_id
 }
 
+resource "aws_cloudwatch_log_group" "log_group" {
+  count = var.create_log_group ? 1 : 0
+  name = var.log_group
+  tags = local.common_tags
+}
+
 resource "aws_msk_cluster" "msk_cluster" {
   cluster_name           = var.cluster_name
   kafka_version          = var.kafka_version

@@ -12,16 +12,16 @@ module "my_msk_cluster" {
   client_subnets         = ["subnet-0aa7679d7b0383a90", "subnet-008af3400812192fa"]
   security_groups        = ["sg-0221b6b9c02d3810a"]
   number_of_broker_nodes = 2
-  #encryption_at_rest_kms_key_arn = "arn:aws:kms:us-east-1:960672390668:key/0dc1b9bb-f664-4750-b971-4aace262ee10"
   environment        = "dev"
   tag_application    = "my application"
   tag_team           = "my team"
   kafka_version      = "2.7.0"
   instance_type      = "kafka.m5.large"
-  # cloudwatch_enabled = true
-  log_group          = "MSK"
-  use_dedicated_key = true
+  log_group          = "test-cluster-logs"
+  create_log_group   = true
+  # use_dedicated_key = true
 }
+
 /**
 resource "aws_kms_key" "kms_key" {
   description = "example"
@@ -76,4 +76,4 @@ output "bootstrap_brokers_tls" {
   description = "TLS connection host:port pairs"
   value       = aws_msk_cluster.msk_cluster.bootstrap_brokers_tls
 }
- */
+*/
