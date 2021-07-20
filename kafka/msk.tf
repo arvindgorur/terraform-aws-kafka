@@ -24,7 +24,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = var.use_dedicated_key ? aws_kms_key.kms_key[0].key_id : null
+    encryption_at_rest_kms_key_arn = var.use_dedicated_key ? aws_kms_key.kms_key[0].arn : null
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true
