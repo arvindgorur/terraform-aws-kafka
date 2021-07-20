@@ -41,17 +41,23 @@ variable "encryption_at_rest_kms_key_arn" {
   default     = null
 }
 
-variable "cloudwatch_enabled" {
-  description = "Specifies whether broker logs should be sent to cloudwatch"
-  type        = bool
-  default     = false
-}
+# variable "cloudwatch_enabled" {
+#   description = "Specifies whether broker logs should be sent to cloudwatch"
+#   type        = bool
+#   default     = false
+# }
 
 variable "log_group" {
   description = "The log group to send the broker logs to"
   type        = string
   default     = null
 }
+
+# variable "create_log_group" {
+#   description = "Specifies whether or not to create a log group for the MSK cluster"
+#   type = bool
+#   default = false
+# }
 
 variable "use_dedicated_key" {
   description = "Specify whether to use AWS managed or dedicated KMS key for encryption"
