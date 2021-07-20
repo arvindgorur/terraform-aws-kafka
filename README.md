@@ -24,6 +24,9 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_msk_cluster.msk_cluster](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/msk_cluster) | resource |
+| [aws_kms_key.kms_key](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_key) | resource |
+| [aws_kms_alias.kms_key_alias](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/kms_alias) | resource |
+| [aws_cloudwatch_log_group.log_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 
 ## Inputs
 
@@ -37,8 +40,8 @@ No modules.
 | <a name="input_kafka_version"></a> [kafka\_version](#input\_kafka\_version) | Kafka version | `string` | `"2.6.1"` | no |
 | <a name="input_number_of_broker_nodes"></a> [number\_of\_broker\_nodes](#input\_number\_of\_broker\_nodes) | The number of broker nodes to create | `number` | n/a | yes |
 | <a name="input_security_groups"></a> [security\_groups](#input\_security\_groups) | List of security group IDs to be associated with the cluster to control access | `list(string)` | n/a | yes |
-| <a name="input_encryption_at_rest_kms_key_arn"></a> [encryption\_at\_rest\_kms\_key\_arn](#input\_encryption\_at\_rest\_kms\_key\_arn) | ARN of the KMS key to use to encrypt data at rest. If no key is specified, the default AWS managed key for KMS will be used | `string` | `null` | no |
-| <a name="input_cloudwatch_enabled"></a> [cloudwatch\_enabled](#input\_cloudwatch\_enabled) | Specifies whether broker logs should be sent to cloudwatch | `bool` | `false` | no |
+| <a name="input_use_dedicated_key"></a> [use\_dedicated\_key](#input\_use\_dedicated\_key) | Specifies whether to use AWS managed or dedicated KMS key for encryption | `bool` | `false` | no |
+| <a name="input_create_log_group"></a> [use\_create\_log\_group](#input\_create\_log\_group) | Specifies whether to a new log group should be created to store broker logs | `bool` | `false` | no |
 | <a name="input_log_group"></a> [log\_group](#input\_log\_group) | The log group to send the broker logs to | `string` | `null` | no |
 | <a name="input_tag_application"></a> [tag\_application](#input\_tag\_application) | Application tag | `string` | n/a | yes |
 | <a name="input_tag_team"></a> [tag\_team](#input\_tag\_team) | Team tag | `string` | n/a | yes |
@@ -48,3 +51,4 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_msk_cluster_arn"></a> [msk\_cluster\_arn](#output\_msk\_cluster\_arn) | MSK Cluster ARN |
+| <a name="output_broker_endpoints"></a> [msk\_broker\_endpoints](#output\_broker\_endpoints) | Broker connection endpoint(s) |
