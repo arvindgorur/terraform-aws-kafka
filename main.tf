@@ -19,7 +19,7 @@ module "my_msk_cluster" {
   instance_type      = "kafka.m5.large"
   log_group          = "test-cluster-logs"
   create_log_group   = true
-  # use_dedicated_key = true
+  use_dedicated_key  = true
 }
 
 /**
