@@ -46,7 +46,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   encryption_info {
-    encryption_at_rest_kms_key_arn = aws_kms_key.kms.arn
+    encryption_at_rest_kms_key_arn = aws_kms_key.kms_key.arn
     encryption_in_transit {
       client_broker = "TLS"
       in_cluster    = true
@@ -57,7 +57,7 @@ resource "aws_msk_cluster" "msk_cluster" {
     broker_logs {
       cloudwatch_logs {
         enabled   = true
-        log_group = aws_cloudwatch_log_group.test.name
+        log_group = aws_cloudwatch_log_group.log_group.name
       }
     }
   }
@@ -68,10 +68,10 @@ resource "aws_msk_cluster" "msk_cluster" {
 }
 
 output "zookeeper_connect_string" {
-  value = aws_msk_cluster.example.zookeeper_connect_string
+  value = aws_msk_cluster.msk_cluster.zookeeper_connect_string
 }
 
 output "bootstrap_brokers_tls" {
   description = "TLS connection host:port pairs"
-  value       = aws_msk_cluster.example.bootstrap_brokers_tls
+  value       = aws_msk_cluster.msk_cluster.bootstrap_brokers_tls
 }
