@@ -31,7 +31,7 @@ resource "aws_cloudwatch_log_group" "log_group" {
 }
 
 resource "aws_msk_cluster" "msk_cluster" {
-  cluster_name           = "my_cluster"
+  cluster_name           = "test-cluster"
   kafka_version          = "2.6.1"
   number_of_broker_nodes = 2
 
