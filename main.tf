@@ -9,8 +9,8 @@
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-0aa7679d7b0383a90", "subnet-008af3400812192fa"]
-  security_groups        = ["sg-0221b6b9c02d3810a"]
+  client_subnets         = ["subnet-00708070226958b56", "subnet-09ef42684fb06b039"]
+  security_groups        = ["sg-0e6e5ff378dd3a291"]
   number_of_broker_nodes = 2
   environment        = "dev"
   tag_application    = "my application"
