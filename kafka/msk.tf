@@ -1,4 +1,3 @@
-/**
 resource "aws_msk_cluster" "msk_cluster" {
   cluster_name           = var.cluster_name
   kafka_version          = var.kafka_version
@@ -9,6 +8,11 @@ resource "aws_msk_cluster" "msk_cluster" {
     ebs_volume_size = var.ebs_volume_size
     client_subnets  = var.client_subnets
     security_groups = var.security_groups
+  }
+
+  configuration_info {
+    arn      = var.server_properties != null ? aws_msk_configuration.configuration.arn : null
+    revision = var.server_properties != null ? aws_msk_configuration.configuration.latest_revision : null
   }
 
   encryption_info {
@@ -30,4 +34,3 @@ resource "aws_msk_cluster" "msk_cluster" {
 
   tags = local.common_tags
 }
-*/

@@ -5,12 +5,11 @@
  *
  *
  */
-/**
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-00708070226958b56", "subnet-09ef42684fb06b039"]
-  security_groups        = ["sg-0e6e5ff378dd3a291"]
+  client_subnets         = ["subnet-0073f682532f614c2", "subnet-0cf59ea6aae43702c"]
+  security_groups        = ["sg-0790ef4af25c069b7"]
   number_of_broker_nodes = 2
   environment        = "dev"
   tag_application    = "my application"
@@ -20,6 +19,12 @@ module "my_msk_cluster" {
   log_group          = "test-cluster-logs"
   create_log_group   = true
   use_dedicated_key  = true
+  config_name        = "my_config"
+  server_properties  = <<CONFIG
+auto.create.topics.enable=true
+delete.topic.enable=true
+max.incremental.fetch.session.cache.slots=3000
+CONFIG
 }
 
 /**
@@ -77,6 +82,3 @@ output "bootstrap_brokers_tls" {
   value       = aws_msk_cluster.msk_cluster.bootstrap_brokers_tls
 }
 */
-module "my_msk_cluster" {
-  source                 = "./kafka"
-}

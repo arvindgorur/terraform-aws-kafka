@@ -1,7 +1,7 @@
-# variable "cluster_name" {
-#   description = "Name of the MSK cluster"
-#   type        = string
-# }
+variable "cluster_name" {
+  description = "Name of the MSK cluster"
+  type        = string
+}
 
 variable "kafka_version" {
   description = "Kafka version"
@@ -15,10 +15,10 @@ variable "server_properties" {
   default = null
 }
 
-# variable "number_of_broker_nodes" {
-#   description = "The number of broker nodes to create"
-#   type        = number
-# }
+variable "number_of_broker_nodes" {
+  description = "The number of broker nodes to create"
+  type        = number
+}
 
 variable "instance_type" {
   description = "Cluster Instance type"
@@ -32,15 +32,15 @@ variable "ebs_volume_size" {
   default     = 100
 }
 
-# variable "client_subnets" {
-#   description = "List of subnets to connect to in the VPC"
-#   type        = list(string)
-# }
+variable "client_subnets" {
+  description = "List of subnets to connect to in the VPC"
+  type        = list(string)
+}
 
-# variable "security_groups" {
-#   description = "List of security group IDs to be associated with the cluster to control access"
-#   type        = list(string)
-# }
+variable "security_groups" {
+  description = "List of security group IDs to be associated with the cluster to control access"
+  type        = list(string)
+}
 
 variable "encryption_at_rest_kms_key_arn" {
   description = "ARN of the KMS key to use to encrypt data at rest"
@@ -54,10 +54,10 @@ variable "create_log_group" {
   default = false
 }
 
-# variable "log_group" {
-#   description = "The log group to send the broker logs to"
-#   type        = string
-# }
+variable "log_group" {
+  description = "The log group to send the broker logs to"
+  type        = string
+}
 
 variable "use_dedicated_key" {
   description = "Specify whether to use AWS managed or dedicated KMS key for encryption"
@@ -65,44 +65,44 @@ variable "use_dedicated_key" {
   default     = false
 }
 
-# variable "environment" {
-#   description = "Provide appropriate environment name"
-#   type        = string
+variable "environment" {
+  description = "Provide appropriate environment name"
+  type        = string
 
-#   validation {
-#     condition = contains([
-#       "dev",
-#       "development",
-#       "uat",
-#       "production",
-#       "prod",
-#       "sandbox"
-#     ], var.environment)
+  validation {
+    condition = contains([
+      "dev",
+      "development",
+      "uat",
+      "production",
+      "prod",
+      "sandbox"
+    ], var.environment)
 
-#     error_message = "The environment value is not valid. Valid values are dev/development/uat/prod/production/sandbox."
-#   }
-# }
+    error_message = "The environment value is not valid. Valid values are dev/development/uat/prod/production/sandbox."
+  }
+}
 
-# variable "tag_application" {
-#   description = "Application tag"
-#   type        = string
-# }
+variable "tag_application" {
+  description = "Application tag"
+  type        = string
+}
 
-# variable "tag_team" {
-#   description = "Team tag"
-#   type        = string
-# }
+variable "tag_team" {
+  description = "Team tag"
+  type        = string
+}
 
-# locals {
-#   common_tags = {
-#     Application = var.tag_application
-#     Team        = var.tag_team
-#     environment = var.environment
-#   }
-# }
+locals {
+  common_tags = {
+    Application = var.tag_application
+    Team        = var.tag_team
+    environment = var.environment
+  }
+}
 
-# variable "config_description" {
-#   description = "Description of the broker configuration"
-#   type = string
-#   default = null
-# }
+variable "config_description" {
+  description = "Description of the broker configuration"
+  type = string
+  default = null
+}
