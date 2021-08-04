@@ -80,8 +80,8 @@ output "bootstrap_brokers_tls" {
 module "my_msk_cluster" {
   source                 = "./kafka"
   server_properties = <<CONFIG
-auto.create.topics.enable = true
-delete.topic.enable = true
-max.incremental.fetch.session.cache.slots = 2000
+auto.create.topics.enable=true
+delete.topic.enable=true
+max.incremental.fetch.session.cache.slots=3000
 CONFIG
 }
