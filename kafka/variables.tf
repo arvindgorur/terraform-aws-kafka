@@ -93,3 +93,9 @@ locals {
     environment = var.environment
   }
 }
+
+variable "config_description" {
+  description = "Description of the broker configuration"
+  type = string
+  default = null
+}

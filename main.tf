@@ -5,7 +5,7 @@
  *
  *
  */
-
+/**
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
@@ -77,3 +77,11 @@ output "bootstrap_brokers_tls" {
   value       = aws_msk_cluster.msk_cluster.bootstrap_brokers_tls
 }
 */
+module "my_msk_cluster" {
+  source                 = "./kafka"
+  server_properties = <<CONFIG
+auto.create.topics.enable = true
+delete.topic.enable = true
+max.incremental.fetch.session.cache.slots = 2000
+CONFIG
+}

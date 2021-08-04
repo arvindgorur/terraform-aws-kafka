@@ -1,3 +1,4 @@
+/**
 resource "aws_msk_cluster" "msk_cluster" {
   cluster_name           = var.cluster_name
   kafka_version          = var.kafka_version
@@ -29,3 +30,4 @@ resource "aws_msk_cluster" "msk_cluster" {
 
   tags = local.common_tags
 }
+*/
