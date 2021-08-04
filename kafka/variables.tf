@@ -9,6 +9,12 @@ variable "kafka_version" {
   default     = "2.6.1"
 }
 
+variable "server_properties" {
+  description = "Kafka server configuration properties"
+  type = string
+  default = null
+}
+
 # variable "number_of_broker_nodes" {
 #   description = "The number of broker nodes to create"
 #   type        = number
