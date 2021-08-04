@@ -11,8 +11,8 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   configuration_info {
-    arn      = var.server_properties != null ? aws_msk_configuration.configuration.arn : null
-    revision = var.server_properties != null ? aws_msk_configuration.configuration.latest_revision : null
+    arn      = var.server_properties != null ? aws_msk_configuration.configuration[0].arn : null
+    revision = var.server_properties != null ? aws_msk_configuration.configuration[0].latest_revision : null
   }
 
   encryption_info {
