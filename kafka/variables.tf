@@ -3,6 +3,12 @@ variable "cluster_name" {
   type        = string
 }
 
+variable "config_name" {
+  description = "Name of the MSK config"
+  type        = string
+  default     = null
+}
+
 variable "kafka_version" {
   description = "Kafka version"
   type        = string
