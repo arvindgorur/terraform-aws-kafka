@@ -1,4 +1,3 @@
-/*
 resource "aws_kms_key" "kms_key" {
   count               = var.use_dedicated_key ? 1 : 0
   description         = "KMS key for MSK cluster ${var.cluster_name}"
@@ -11,4 +10,3 @@ resource "aws_kms_alias" "kms_key_alias" {
   name          = "alias/msk-${var.cluster_name}-key"
   target_key_id = aws_kms_key.kms_key[0].key_id
 }
-*/
