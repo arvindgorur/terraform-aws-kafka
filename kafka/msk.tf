@@ -10,9 +10,12 @@ resource "aws_msk_cluster" "msk_cluster" {
     security_groups = var.security_groups
   }
 
-  configuration_info {
-    arn      = var.server_properties != null ? aws_msk_configuration.configuration[0].arn : null
-    revision = var.server_properties != null ? aws_msk_configuration.configuration[0].latest_revision : null
+  dynamic "configuration_info" {
+    for_each = list(var.server_properties)
+    content {
+      arn      = aws_msk_configuration.configuration[0].arn
+      revision = aws_msk_configuration.configuration[0].latest_revision
+    }
   }
 
   encryption_info {
