@@ -10,9 +10,9 @@ resource "aws_msk_cluster" "msk_cluster" {
     security_groups = var.security_groups
   }
 
-  configuration_info" {
-    arn      = ""
-    revision = ""
+  configuration_info {
+    arn      = null
+    revision = null
   }
 
   encryption_info {
