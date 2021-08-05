@@ -13,8 +13,8 @@ resource "aws_msk_cluster" "msk_cluster" {
   dynamic "configuration_info" {
     for_each = aws_msk_configuration.configuration
     content {
-      arn      = configuration_info.arn.value
-      revision = configuration_info.latest_revision.value
+      arn      = configuration_info.value["arn"]
+      revision = configuration_info.value["latest_version"]
     }
   }
 
