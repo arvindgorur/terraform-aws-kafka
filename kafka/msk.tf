@@ -11,10 +11,10 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   dynamic "configuration_info" {
-    for_each = tolist([var.server_properties])
+    for_each = aws_msk_configuration.configuration
     content {
-      arn      = aws_msk_configuration.configuration[0].arn
-      revision = aws_msk_configuration.configuration[0].latest_revision
+      arn      = configuration_info.arn
+      revision = configuration_info.latest_revision
     }
   }
 
