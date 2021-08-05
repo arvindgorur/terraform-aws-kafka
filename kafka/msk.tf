@@ -11,8 +11,8 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   configuration_info" {
-    arn      = null
-    revision = null
+    arn      = ""
+    revision = ""
   }
 
   encryption_info {
