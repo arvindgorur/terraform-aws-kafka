@@ -11,14 +11,14 @@ module "my_msk_cluster" {
   client_subnets         = ["subnet-0e557b05bded11369", "subnet-067a9d02929edcae4"]
   security_groups        = ["sg-0885904c93f485b69"]
   number_of_broker_nodes = 2
-  environment        = "dev"
-  tag_application    = "my application"
-  tag_team           = "my team"
-  kafka_version      = "2.7.0"
-  instance_type      = "kafka.m5.large"
-  log_group          = "test-cluster-logs"
-  create_log_group   = true
-  use_dedicated_key  = true
+  environment            = "dev"
+  tag_application        = "my application"
+  tag_team               = "my team"
+  kafka_version          = "2.7.0"
+  instance_type          = "kafka.m5.large"
+  log_group              = "test-cluster-logs"
+  create_log_group       = true
+  use_dedicated_key      = true
 }
 
 /**
