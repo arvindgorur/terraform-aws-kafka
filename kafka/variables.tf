@@ -24,7 +24,7 @@ variable "server_properties" {
 variable "config" {
   description = "Kafka configuration details"
   type        = map
-  default     = []
+  default     = {}
 }
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
