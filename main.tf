@@ -12,7 +12,7 @@ resource "aws_msk_configuration" "my_config" {
   server_properties = <<CONFIG
 auto.create.topics.enable=true
 delete.topic.enable=true
-max.incremental.fetch.session.cache.slots=7000
+max.incremental.fetch.session.cache.slots=9000
 CONFIG
 }
 
@@ -33,7 +33,7 @@ module "my_msk_cluster" {
   config = [
     {
       arn      = aws_msk_configuration.my_config.arn
-      revision = 2
+      revision = aws_msk_configuration.my_config.latest_revision
     }
   ]
 }
