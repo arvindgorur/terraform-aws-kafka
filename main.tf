@@ -17,6 +17,7 @@ CONFIG
 }
 
 module "my_msk_cluster" {
+  depends_on = [aws_msk_configuration.my_config]
   source                 = "./kafka"
   cluster_name           = "test-cluster"
   client_subnets         = ["subnet-08563e799292b1257", "subnet-03d957a9d796727b6"]
