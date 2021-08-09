@@ -23,7 +23,7 @@ variable "server_properties" {
 
 variable "config" {
   description = "Kafka configuration details"
-  type        = list(any)
+  type        = map
   default     = []
 }
 variable "number_of_broker_nodes" {

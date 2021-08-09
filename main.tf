@@ -5,18 +5,17 @@
  *
  *
  */
-/*
-resource "aws_msk_configuration" "example" {
+resource "aws_msk_configuration" "my_config" {
   kafka_versions = ["2.7.0"]
   name           = "my_config"
 
-  server_properties  = <<CONFIG
+  server_properties = <<CONFIG
 auto.create.topics.enable=true
 delete.topic.enable=true
 max.incremental.fetch.session.cache.slots=3000
 CONFIG
 }
-*/
+
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
@@ -31,6 +30,10 @@ module "my_msk_cluster" {
   log_group              = "test-cluster-logs"
   create_log_group       = true
   use_dedicated_key      = true
+  config = {
+    arn = aws_msk_configuration.my_config.arn
+    revision = aws_msk_configuration.my_config.latest_revision
+  }
 }
 
 /**
