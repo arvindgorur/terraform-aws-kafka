@@ -33,8 +33,8 @@ module "my_msk_cluster" {
   use_custom_config = true
   kafka_config = [
     {
-      server_properties      = "max.incremental.fetch.session.cache.slots=2000"
-      revision = 1
+      server_properties      = "max.incremental.fetch.session.cache.slots=3000"
+      revision = 2
     }
   ]
 }
