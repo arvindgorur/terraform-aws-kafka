@@ -12,7 +12,7 @@ resource "aws_msk_configuration" "my_config" {
   server_properties = <<CONFIG
 auto.create.topics.enable=true
 delete.topic.enable=true
-max.incremental.fetch.session.cache.slots=4000
+max.incremental.fetch.session.cache.slots=7000
 CONFIG
 }
 
