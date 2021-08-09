@@ -7,7 +7,7 @@
  */
 resource "aws_msk_configuration" "my_config" {
   kafka_versions = ["2.7.0"]
-  name           = "my_config"
+  name           = "my-config"
 
   server_properties = <<CONFIG
 auto.create.topics.enable=true
