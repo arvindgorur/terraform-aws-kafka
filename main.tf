@@ -34,7 +34,7 @@ module "my_msk_cluster" {
   config = [
     {
       arn      = aws_msk_configuration.my_config.arn
-      revision = aws_msk_configuration.my_config.latest_revision
+      revision = 4
     }
   ]
 }
