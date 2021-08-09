@@ -17,10 +17,15 @@ variable "kafka_version" {
 
 variable "server_properties" {
   description = "Kafka server configuration properties"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
 
+variable "config" {
+  description = "Kafka configuration details"
+  type        = list(any)
+  default     = []
+}
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
   type        = number
@@ -56,8 +61,8 @@ variable "encryption_at_rest_kms_key_arn" {
 
 variable "create_log_group" {
   description = "Specifies whether or not to create a log group for the MSK cluster"
-  type = bool
-  default = false
+  type        = bool
+  default     = false
 }
 
 variable "log_group" {
@@ -109,6 +114,6 @@ locals {
 
 variable "config_description" {
   description = "Description of the broker configuration"
-  type = string
-  default = null
+  type        = string
+  default     = null
 }
