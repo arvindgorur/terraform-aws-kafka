@@ -11,7 +11,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   dynamic "configuration_info" {
-    for_each = var.msk_config
+    for_each = var.kafka_config
     content {
       arn      = aws_msk_configuration.configuration[0].arn
       revision = configuration_info.value["revision"]
