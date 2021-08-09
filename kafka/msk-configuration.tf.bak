@@ -1,5 +1,0 @@
-resource "aws_msk_configuration" "configuration" {
-  kafka_versions    = [var.kafka_version]
-  name              = var.config_name
-  server_properties = var.server_properties
-}

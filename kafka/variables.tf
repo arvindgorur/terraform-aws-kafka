@@ -21,11 +21,30 @@ variable "server_properties" {
   default     = null
 }
 
-variable "config" {
-  description = "Kafka configuration details"
+variable "kafka_config" {
+  description = "Cluster configuration ARN and version information. Map specified as {arn = <arn>, revision = <int>}"
   type        = list(any)
   default     = []
 }
+
+variable "config_description" {
+  description = "Kafka configuration description"
+  type        = string
+  default     = null
+}
+
+variable "config_name" {
+  description = "Name of the custom Kafka configuration"
+  type        = string
+  default     = null
+}
+
+# variable "server_properties" {
+#   description = "Settings for the custom Kafka configuration"
+#   type        = string
+#   default     = null
+# }
+
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
   type        = number

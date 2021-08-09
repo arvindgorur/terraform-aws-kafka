@@ -5,23 +5,23 @@
  *
  *
  */
-resource "aws_msk_configuration" "my_config" {
-  kafka_versions = ["2.7.0"]
-  name           = "my-config"
+# resource "aws_msk_configuration" "my_config" {
+#   kafka_versions = ["2.7.0"]
+#   name           = "my-config"
 
-  server_properties = <<CONFIG
-auto.create.topics.enable=true
-delete.topic.enable=true
-max.incremental.fetch.session.cache.slots=9000
-CONFIG
-}
+#   server_properties = <<CONFIG
+# auto.create.topics.enable=true
+# delete.topic.enable=true
+# max.incremental.fetch.session.cache.slots=9000
+# CONFIG
+# }
 
 module "my_msk_cluster" {
   depends_on = [aws_msk_configuration.my_config]
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-08563e799292b1257", "subnet-03d957a9d796727b6"]
-  security_groups        = ["sg-0674ce1d8a147d269"]
+  client_subnets         = ["subnet-01a06432b4cf37af1", "subnet-07a3a59db265caf45"]
+  security_groups        = ["sg-097f8f90eb138879d"]
   number_of_broker_nodes = 2
   environment            = "dev"
   tag_application        = "my application"
@@ -31,10 +31,10 @@ module "my_msk_cluster" {
   log_group              = "test-cluster-logs"
   create_log_group       = true
   use_dedicated_key      = true
-  config = [
+  kafka_config = [
     {
-      arn      = aws_msk_configuration.my_config.arn
-      revision = 4
+      server_properties      = "max.incremental.fetch.session.cache.slots=2000"
+      revision = 1
     }
   ]
 }
