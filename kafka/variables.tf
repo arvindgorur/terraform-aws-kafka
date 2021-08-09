@@ -12,7 +12,7 @@ variable "kafka_version" {
 variable "kafka_config" {
   description = "Cluster configuration ARN and version information. Map specified as {arn = <arn>, revision = <int>}"
   type        = list(any)
-  default     = []
+  default     = null
 }
 
 variable "config_description" {
