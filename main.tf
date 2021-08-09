@@ -30,10 +30,12 @@ module "my_msk_cluster" {
   log_group              = "test-cluster-logs"
   create_log_group       = true
   use_dedicated_key      = true
-  config = {
-    arn = aws_msk_configuration.my_config.arn
-    revision = aws_msk_configuration.my_config.latest_revision
-  }
+  config = [
+    {
+      arn = aws_msk_configuration.my_config.arn
+      revision = aws_msk_configuration.my_config.latest_revision
+    }
+  ]
 }
 
 /**
