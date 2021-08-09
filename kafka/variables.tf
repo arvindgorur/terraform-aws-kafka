@@ -3,22 +3,10 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "config_name" {
-  description = "Name of the MSK config"
-  type        = string
-  default     = null
-}
-
 variable "kafka_version" {
   description = "Kafka version"
   type        = string
   default     = "2.6.1"
-}
-
-variable "server_properties" {
-  description = "Kafka server configuration properties"
-  type        = string
-  default     = null
 }
 
 variable "kafka_config" {
@@ -129,10 +117,4 @@ locals {
     Team        = var.tag_team
     environment = var.environment
   }
-}
-
-variable "config_description" {
-  description = "Description of the broker configuration"
-  type        = string
-  default     = null
 }
