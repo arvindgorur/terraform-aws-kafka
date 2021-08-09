@@ -11,7 +11,7 @@ resource "aws_msk_cluster" "msk_cluster" {
   }
 
   dynamic "configuration_info" {
-    for_each = to_list(var.config)
+    for_each = tolist(var.config)
     content {
       arn      = configuration_info.value["arn"]
       revision = configuration_info.value["revision"]
