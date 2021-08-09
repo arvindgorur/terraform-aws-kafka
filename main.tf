@@ -5,11 +5,23 @@
  *
  *
  */
+/*
+resource "aws_msk_configuration" "example" {
+  kafka_versions = ["2.7.0"]
+  name           = "my_config"
+
+  server_properties  = <<CONFIG
+auto.create.topics.enable=true
+delete.topic.enable=true
+max.incremental.fetch.session.cache.slots=3000
+CONFIG
+}
+*/
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-0e557b05bded11369", "subnet-067a9d02929edcae4"]
-  security_groups        = ["sg-0885904c93f485b69"]
+  client_subnets         = ["subnet-08563e799292b1257", "subnet-03d957a9d796727b6"]
+  security_groups        = ["sg-0674ce1d8a147d269"]
   number_of_broker_nodes = 2
   environment            = "dev"
   tag_application        = "my application"
@@ -22,12 +34,6 @@ module "my_msk_cluster" {
 }
 
 /**
-  config_name        = "my_config"
-  server_properties  = <<CONFIG
-auto.create.topics.enable=true
-delete.topic.enable=true
-max.incremental.fetch.session.cache.slots=3000
-CONFIG
 
 resource "aws_kms_key" "kms_key" {
   description = "example"
