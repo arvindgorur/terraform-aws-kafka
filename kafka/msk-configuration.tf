@@ -1,5 +1,5 @@
 resource "aws_msk_configuration" "configuration" {
-  count             = var.kafka_config != null ? 1 : 0
+  count             = var.use_custom_config ? 1 : 0
   description       = var.config_description
   kafka_versions    = [var.kafka_version]
   name              = var.config_name != null ? var.config_name : var.cluster_name

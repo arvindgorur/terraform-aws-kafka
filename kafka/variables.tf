@@ -12,7 +12,13 @@ variable "kafka_version" {
 variable "kafka_config" {
   description = "Cluster configuration ARN and version information. Map specified as {arn = <arn>, revision = <int>}"
   type        = list(any)
-  default     = null
+  default     = []
+}
+
+variable "use_custom_config" {
+  description = "Specifies whether or not to create a custom Kafka configuration"
+  type        = bool
+  default     = false
 }
 
 variable "config_description" {
