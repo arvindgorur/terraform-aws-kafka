@@ -33,12 +33,6 @@ variable "config_name" {
   default     = null
 }
 
-# variable "server_properties" {
-#   description = "Settings for the custom Kafka configuration"
-#   type        = string
-#   default     = null
-# }
-
 variable "number_of_broker_nodes" {
   description = "The number of broker nodes to create"
   type        = number
@@ -72,10 +66,10 @@ variable "encryption_at_rest_kms_key_arn" {
   default     = null
 }
 
-variable "create_log_group" {
-  description = "Specifies whether or not to create a log group for the MSK cluster"
-  type        = bool
-  default     = false
+variable "config_kafka_versions" {
+  description = "Versions of Kafka this config can be used with"
+  type        = list(string)
+  default     = []
 }
 
 variable "log_group" {

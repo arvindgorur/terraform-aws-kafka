@@ -30,7 +30,7 @@ resource "aws_msk_cluster" "msk_cluster" {
     broker_logs {
       cloudwatch_logs {
         enabled   = true
-        log_group = var.log_group
+        log_group = aws_cloudwatch_log_group.log_group.name
       }
     }
   }

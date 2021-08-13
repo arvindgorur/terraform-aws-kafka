@@ -19,8 +19,8 @@
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
-  client_subnets         = ["subnet-01a06432b4cf37af1", "subnet-07a3a59db265caf45"]
-  security_groups        = ["sg-097f8f90eb138879d"]
+  client_subnets         = ["subnet-0d3c046752c997bbf", "subnet-02e6dcc736c616b1d"]
+  security_groups        = ["sg-0de9938526d83501a"]
   number_of_broker_nodes = 2
   environment            = "dev"
   tag_application        = "my application"
@@ -28,12 +28,12 @@ module "my_msk_cluster" {
   kafka_version          = "2.7.0"
   instance_type          = "kafka.m5.large"
   log_group              = "test-cluster-logs"
-  create_log_group       = true
   use_dedicated_key      = true
   use_custom_config = true
+  config_description = "Some random description"
   kafka_config = [
     {
-      server_properties      = "max.incremental.fetch.session.cache.slots=3000"
+      server_properties      = "max.incremental.fetch.session.cache.slots=1000"
       revision = 2
     }
   ]
