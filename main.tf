@@ -30,7 +30,6 @@ module "my_msk_cluster" {
   log_group              = "test-cluster-logs"
   use_dedicated_key      = true
   use_custom_config = true
-  config_description = "Some random description"
   kafka_config = [
     {
       server_properties      = "max.incremental.fetch.session.cache.slots=1000"
