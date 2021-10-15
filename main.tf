@@ -5,6 +5,13 @@
  *
  *
  */
+
+module "jupyter-poc" {
+  # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-msk?ref=v1.1.2"
+  source = "./sagemaker"
+  code_repository_name = "test-repo"
+  repository_url = "https://www.myrepo.com/repo"
+}
 # resource "aws_msk_configuration" "my_config" {
 #   kafka_versions = ["2.7.0"]
 #   name           = "my-config"
@@ -16,6 +23,7 @@
 # CONFIG
 # }
 
+/**
 module "my_msk_cluster" {
   source                 = "./kafka"
   cluster_name           = "test-cluster"
@@ -38,8 +46,6 @@ module "my_msk_cluster" {
     }
   ]
 }
-
-/**
 
 resource "aws_kms_key" "kms_key" {
   description = "example"
