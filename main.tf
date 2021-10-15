@@ -12,6 +12,13 @@ module "jupyter-poc" {
   code_repository_name = "test-repo"
   repository_url = "https://www.myrepo.com/repo"
 }
+
+module "something" {
+  source = "./sagemaker"
+  code_repository_name = "test-repo2"
+  repository_url = "https://www.myrepo.com/repo2"
+  secret_arn = "arn:aws:secretsmanager:us-east-1:015786920578:secret:MySecret-N4ka0B"
+}
 # resource "aws_msk_configuration" "my_config" {
 #   kafka_versions = ["2.7.0"]
 #   name           = "my-config"
