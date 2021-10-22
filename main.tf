@@ -6,19 +6,28 @@
  *
  */
 
-module "jupyter-poc" {
-  # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-msk?ref=v1.1.2"
-  source = "./sagemaker"
-  code_repository_name = "test-repo"
-  repository_url = "https://www.myrepo.com/repo"
+# elasticache
+
+
+module "test-notebook" {
+  # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-sagemaker?ref=v1.2.0"
+  source                 = ".sagemaker"
+  instance_name          = "test-notebook"
+  instance_type          = "ml.t2.medium"
+  volume_size            = 5
+  subnet_id              = "subnet-cfdea692"
+  security_groups        = "sg-9e51dbe9"
+  tag_application        = "Jupyter POC"
+  environment            = "dev"
+  tag_team               = "IT4I"
 }
 
-module "something" {
-  source = "./sagemaker"
-  code_repository_name = "test-repo2"
-  repository_url = "https://www.myrepo.com/repo2"
-  secret_arn = "arn:aws:secretsmanager:us-east-1:015786920578:secret:MySecret-N4ka0B"
-}
+# module "something" {
+#   source = "./sagemaker"
+#   code_repository_name = "test-repo2"
+#   repository_url = "https://www.myrepo.com/repo2"
+#   secret_arn = "arn:aws:secretsmanager:us-east-1:015786920578:secret:MySecret-N4ka0B"
+# }
 # resource "aws_msk_configuration" "my_config" {
 #   kafka_versions = ["2.7.0"]
 #   name           = "my-config"
