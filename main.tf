@@ -16,7 +16,7 @@ module "test-notebook" {
   instance_type          = "ml.t2.medium"
   volume_size            = 5
   subnet_id              = "subnet-cfdea692"
-  security_groups        = "sg-9e51dbe9"
+  security_groups        = ["sg-9e51dbe9"]
   tag_application        = "Jupyter POC"
   environment            = "dev"
   tag_team               = "IT4I"
