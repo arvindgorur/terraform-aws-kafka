@@ -11,7 +11,7 @@
 
 module "test-notebook" {
   # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-sagemaker?ref=v1.2.0"
-  source                 = ".sagemaker"
+  source                 = "./sagemaker"
   instance_name          = "test-notebook"
   instance_type          = "ml.t2.medium"
   volume_size            = 5
