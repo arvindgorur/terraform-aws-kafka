@@ -86,13 +86,7 @@ variable "lc_start_script" {
   type        = string
   default     = <<CONFIG
 #!/bin/bash
-sudo ip route del 0.0.0.0/0 via 172.16.0.1 dev eth0
-sudo ip route add 0.0.0.0/0 via 172.20.4.1 dev eth2
-sudo ip route add 172.30.7.0/25 via 172.20.4.1 dev eth2
-sudo ip route add 172.30.0.0/16 via 172.20.4.1 dev eth2
-sudo aws cp s3://hoopp-isg-it4i-sw-store/jupyter-configs/on-start.sh /tmp/on-start.sh
-sudo chmod +x /tmp/on-start.sh
-/tmp/on-start.sh
+whoami
 CONFIG
 }
 
@@ -101,11 +95,7 @@ variable "lc_create_script" {
   type        = string
   default     = <<CONFIG
 #!/bin/bash
-sudo ip route add 172.30.7.0/25 via 172.20.4.1 dev eth2
-sudo ip route add 172.30.0.0/16 via 172.20.4.1 dev eth2
-sudo aws cp s3://hoopp-isg-it4i-sw-store/jupyter-configs/on-create.sh /tmp/on-create.sh
-sudo chmod +x /tmp/on-create.sh
-/tmp/on-create.sh
+whoami
 CONFIG
 }
 
