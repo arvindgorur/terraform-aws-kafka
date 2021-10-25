@@ -84,19 +84,21 @@ variable "secret_arn" {
 variable "lc_start_script" {
   description = "Script to be launched when a notebook instance is started"
   type        = string
-  default     = <<CONFIG
-#!/bin/bash
-whoami
-CONFIG
+  default     = null
+#   default     = <<CONFIG
+# #!/bin/bash
+# whoami
+# CONFIG
 }
 
 variable "lc_create_script" {
   description = "Script to be launched when a notebook instance is created"
   type        = string
-  default     = <<CONFIG
-#!/bin/bash
-whoami
-CONFIG
+  default     = null
+#   default     = <<CONFIG
+# #!/bin/bash
+# whoami
+# CONFIG
 }
 
 variable "environment" {
