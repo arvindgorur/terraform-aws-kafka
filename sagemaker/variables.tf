@@ -63,11 +63,11 @@ variable "default_code_repository" {
   default     = null
 }
 
-variable "code_repository_name" {
-  description = "Name for the SageMaker code repo to be created"
-  type        = string
-  default = null
-}
+# variable "code_repository_name" {
+#   description = "Name for the SageMaker code repo to be created"
+#   type        = string
+#   default = null
+# }
 
 variable "repository_url" {
   description = "URL of the Git repo to be attached to the notebook instance"
