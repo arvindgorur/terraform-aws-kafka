@@ -20,7 +20,7 @@ module "test-notebook" {
   tag_application        = "Jupyter POC"
   environment            = "dev"
   tag_team               = "IT4I"
-  code_repository_name   = "IT4I-Dev"
+  default_code_repository   = "IT4I-Dev"
   repository_url         = "https://hoopp.visualstudio.com/ISG/_git/IT4I-Dev"
 
 }
