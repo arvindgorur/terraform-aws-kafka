@@ -85,20 +85,18 @@ variable "lc_start_script" {
   description = "Script to be launched when a notebook instance is started"
   type        = string
   default     = null
-#   default     = <<CONFIG
-# #!/bin/bash
-# whoami
-# CONFIG
 }
 
 variable "lc_create_script" {
   description = "Script to be launched when a notebook instance is created"
   type        = string
   default     = null
-#   default     = <<CONFIG
-# #!/bin/bash
-# whoami
-# CONFIG
+}
+
+variable "conda_version" {
+  description = "Version of conda to be installed"
+  type = string
+  default = "4.6.14"
 }
 
 variable "environment" {
@@ -140,4 +138,5 @@ locals {
     Team        = var.tag_team
     environment = var.environment
   }, var.custom_tags)
+  on_create = templatefile("${path.module}/scripts/on-create.sh", {VERSION = var.conda_version})
 }
