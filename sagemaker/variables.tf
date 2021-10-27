@@ -139,4 +139,5 @@ locals {
     environment = var.environment
   }, var.custom_tags)
   on_create = templatefile("${path.module}/scripts/on-create.sh", {VERSION = var.conda_version})
+  on_start = templatefile("${path.module}/scripts/on-create.sh")
 }

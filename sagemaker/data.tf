@@ -13,6 +13,6 @@ data "aws_iam_policy_document" "sagemaker_assume_role" {
 
 # }
 
-data "template_file" "on_start" {
-  template = file("${path.module}/scripts/on-start.sh")  
-}
+# data "template_file" "on_start" {
+#   template = file("${path.module}/scripts/on-start.sh")  
+# }
