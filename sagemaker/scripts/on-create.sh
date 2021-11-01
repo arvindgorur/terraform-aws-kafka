@@ -1,7 +1,7 @@
 #!/bin/bash
 whoami >> /tmp/on-create.txt
 sudo yum install cifs-utils unixODBC-devel freetds -y
-URL="https://repo.anaconda.com/miniconda/Miniconda3-${VERSION}-Linux-x86_64.sh"
+URL="https://repo.anaconda.com/miniconda/${VERSION}"
 echo $URL >> /tmp/on-create.txt
 cat << "EOF" > /home/ec2-user/create-env.sh
 unset SUDO_UID
