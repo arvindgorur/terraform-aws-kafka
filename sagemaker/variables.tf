@@ -96,7 +96,7 @@ variable "lc_create_script" {
 variable "conda_version" {
   description = "Version of conda to be installed"
   type = string
-  default = "4.6.14"
+  default = "Miniconda3-4.6.14-Linux-x86_64.sh"
 }
 
 variable "environment" {
