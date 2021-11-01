@@ -6,9 +6,10 @@ cat << "EOF" > /home/ec2-user/create-env.sh
 unset SUDO_UID
 KERNEL_NAME="hoopp-custom-conda"
 PYTHON="3.7"
-conda config --remove channels ocnda-forge
-conda create --yes --name "$KERNEL_NAME" anaconda python="$PYTHON"
-source activate "$KERNEL_NAME"
+BIN_PATH=/home/ec2-user/anaconda3/condabin
+$BIN_PATH/conda config --remove channels ocnda-forge
+$BIN_PATH/conda create --yes --name "$KERNEL_NAME" anaconda python="$PYTHON"
+source $BIN_PATH/activate "$KERNEL_NAME"
 pip install --quiet ipykernel
 pip install --quiet boto3
 EOF
