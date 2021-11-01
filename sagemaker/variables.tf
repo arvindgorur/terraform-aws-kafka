@@ -47,7 +47,7 @@ variable "root_access" {
 variable "direct_internet_access" {
   description = "Specifies whether the instance has internet access. If disabled, the instance can only access resources in the VPC"
   type        = string
-  default     = "Disabled"
+  default     = "Enabled"
   validation {
     condition = contains([
       "Enabled",
