@@ -13,8 +13,8 @@ module "test-notebook" {
   # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-sagemaker?ref=v1.2.0"
   source                 = "./sagemaker"
   instance_name          = "test-notebook"
-  instance_type          = "ml.t2.medium"
-  volume_size            = 5
+  instance_type          = "ml.t2.large"
+  volume_size            = 10
   subnet_id              = "subnet-cfdea692"
   security_groups        = ["sg-60b40a29"]
   tag_application        = "Jupyter POC"

@@ -11,12 +11,19 @@ variable "instance_name" {
 variable "instance_type" {
   description = "Compute type for the notebook instance"
   type        = string
+  default = "ml.t2.medium"
 }
 
 variable "volume_size" {
   description = "Volume size for the notebook instance ins GB"
   type        = number
   default     = 100
+}
+
+variable "platform_identifier" {
+  description = "The platform identifier of the notebook instance runtime environment"
+  type = string
+  default = "notebook-al2-v1"
 }
 
 variable "subnet_id" {
