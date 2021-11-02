@@ -12,15 +12,15 @@ wget https://repo.anaconda.com/miniconda/${VERSION} -O "$WORKING_DIR/miniconda.s
 bash "$WORKING_DIR/miniconda.sh" -b -u -p "$WORKING_DIR/miniconda" 
 rm -rf "$WORKING_DIR/miniconda.sh"
 source "$WORKING_DIR/miniconda/bin/activate"
-#BIN_PATH=/home/ec2-user/anaconda3/condabin
 conda config --remove channels conda-forge
 conda create --yes --name "$KERNEL_NAME" anaconda python="$PYTHON"
 conda activate "$KERNEL_NAME"
 #conda config --add channels conda-forge
 pip install --quiet ipykernel
 pip install --quiet boto3
+echo "Done installing custom environment"
 EOF
 
 chmod +x /home/ec2-user/SageMaker/create-env.sh
 chown ec2-user:ec2-user /home/ec2-user/SageMaker/create-env.sh
-sudo -u ec2-user nohup /home/ec2-user/SageMaker/create-env.sh >> /home/ec2-user/SageMaker/nohup.out 2>&1 &
+sudo -u ec2-user nohup /home/ec2-user/SageMaker/create-env.sh >> /home/ec2-user/SageMaker/create-env.log 2>&1 &
