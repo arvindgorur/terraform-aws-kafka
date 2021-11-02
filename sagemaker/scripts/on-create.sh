@@ -4,16 +4,21 @@ yum install cifs-utils unixODBC freetds -y
 
 cat << "EOF" > /home/ec2-user/create-env.sh
 unset SUDO_UID
+WORKING_DIR=/home/ec2-user/SageMaker/custom-miniconda
 KERNEL_NAME="hoopp-custom-conda"
 PYTHON="3.7"
-BIN_PATH=/home/ec2-user/anaconda3/condabin
-$BIN_PATH/conda config --remove channels conda-forge
-$BIN_PATH/conda create --yes --name "$KERNEL_NAME" anaconda python="$PYTHON"
-source $BIN_PATH/activate "$KERNEL_NAME"
+wget https://repo.anaconda.com/miniconda/${VERSION} -O "$WORKING_DIR/miniconda.sh"
+bash "$WORKING_DIR/miniconda.sh" -b -u -p "$WORKING_DIR/miniconda" 
+rm -rf "$WORKING_DIR/miniconda.sh"
+source "$WORKING_DIR/miniconda/bin/activate"
+#BIN_PATH=/home/ec2-user/anaconda3/condabin
+conda config --remove channels conda-forge
+conda create --yes --name "$KERNEL_NAME" anaconda python="$PYTHON"
+conda activate "$KERNEL_NAME"
 pip install --quiet ipykernel
 pip install --quiet boto3
 EOF
 
 chmod +x /home/ec2-user/create-env.sh
 chown ec2-user:ec2-user /home/ec2-user/create-env.sh
-sudo -u ec2-user nohup /home/ec2-user/create-env.sh >> /home/ec2-user/nohup.out 2>&1 &
+#sudo -u ec2-user nohup /home/ec2-user/create-env.sh >> /home/ec2-user/nohup.out 2>&1 &
