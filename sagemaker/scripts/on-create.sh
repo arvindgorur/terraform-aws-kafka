@@ -2,7 +2,7 @@
 whoami >> /tmp/on-create.txt
 yum install cifs-utils unixODBC freetds -y
 
-cat << "EOF" > /home/ec2-user/create-env.sh
+cat << "EOF" > /home/ec2-user/SageMaker/create-env.sh
 unset SUDO_UID
 WORKING_DIR=/home/ec2-user/SageMaker/custom-miniconda
 mkdir -p "$WORKING_DIR"
@@ -21,6 +21,6 @@ pip install --quiet ipykernel
 pip install --quiet boto3
 EOF
 
-chmod +x /home/ec2-user/create-env.sh
-chown ec2-user:ec2-user /home/ec2-user/create-env.sh
-sudo -u ec2-user nohup /home/ec2-user/create-env.sh >> /home/ec2-user/nohup.out 2>&1 &
+chmod +x /home/ec2-user/SageMaker/create-env.sh
+chown ec2-user:ec2-user /home/ec2-user/SageMaker/create-env.sh
+sudo -u ec2-user nohup /home/ec2-user/SageMaker/create-env.sh >> /home/ec2-user/SageMaker/nohup.out 2>&1 &

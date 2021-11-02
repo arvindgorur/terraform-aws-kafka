@@ -9,10 +9,10 @@
 # elasticache
 
 
-module "test-notebook" {
+module "test-notebook-001" {
   # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-sagemaker?ref=v1.2.0"
   source                 = "./sagemaker"
-  instance_name          = "test-notebook"
+  instance_name          = "test-notebook-001"
   instance_type          = "ml.t2.large"
   volume_size            = 10
   subnet_id              = "subnet-cfdea692"
