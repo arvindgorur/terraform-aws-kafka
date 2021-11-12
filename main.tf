@@ -9,21 +9,16 @@
 # elasticache
 
 
-module "test-notebook-001" {
-  # source = "git@ssh.dev.azure.com:v3/Hoopp/ISG/terraform-aws-sagemaker?ref=v1.2.0"
-  source                 = "./sagemaker"
-  instance_name          = "test-notebook-001"
-  instance_type          = "ml.t2.large"
-  volume_size            = 10
-  subnet_id              = "subnet-cfdea692"
-  security_groups        = ["sg-60b40a29"]
-  tag_application        = "Jupyter POC"
-  environment            = "dev"
-  tag_team               = "IT4I"
-  # default_code_repository   = "IT4I-Dev"
-  # repository_url         = "https://hoopp.visualstudio.com/ISG/_git/IT4I-Dev"
+resource "aws_kms_key" "a" {
+  description             = "KMS key 1"
+  deletion_window_in_days = 7
+  policy = null
 }
 
+resource "aws_kms_alias" "a" {
+  name          = "alias/my-key-alias"
+  target_key_id = aws_kms_key.a.key_id
+}
 # module "something" {
 #   source = "./sagemaker"
 #   code_repository_name = "test-repo2"
